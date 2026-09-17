@@ -8,49 +8,63 @@
   <script type="module" src="https://unpkg.com/esp-web-tools@10.1.1/dist/web/install-button.js?module"></script>
   <style>
     :root{--bg:#07111f;--panel:#0f1d2d;--panel2:#12263a;--line:#233b53;--text:#edf4fb;--muted:#94a8bd;--blue:#3b82f6;--cyan:#22d3ee;--green:#22c55e;--amber:#f59e0b}
-    *{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 20% 0,#10263d 0,#07111f 42%);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif}.wrap{max-width:1120px;margin:auto;padding:28px 20px 70px}.nav{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:10px 0 28px}.brand{font-weight:900;letter-spacing:.02em}.nav a{color:var(--muted);text-decoration:none;font-size:.86rem}.hero{display:grid;grid-template-columns:1.25fr .75fr;gap:20px;align-items:stretch}.card{background:rgba(15,29,45,.94);border:1px solid var(--line);border-radius:20px;box-shadow:0 20px 55px rgba(0,0,0,.18)}.hero-copy{padding:34px}.eyebrow{color:var(--cyan);font-size:.72rem;text-transform:uppercase;letter-spacing:.13em;font-weight:900}.hero h1{font-size:clamp(2rem,5vw,3.5rem);line-height:1.03;margin:10px 0 16px;letter-spacing:-.045em}.hero p{color:var(--muted);line-height:1.7;margin:0;max-width:720px}.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}.chip{padding:7px 10px;border:1px solid var(--line);border-radius:999px;color:#b9c9d9;font-size:.75rem}.installer{padding:26px;display:flex;flex-direction:column;justify-content:center}.installer h2{margin:7px 0 8px}.installer p{font-size:.84rem;color:var(--muted);line-height:1.6}.install-box{padding:17px;border:1px solid var(--line);border-radius:14px;background:#0a1725;margin-top:12px}.install-note{font-size:.72rem;color:var(--muted);margin-top:12px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}.feature{padding:22px}.feature h3{margin:8px 0;font-size:1rem}.feature p{color:var(--muted);font-size:.82rem;line-height:1.55;margin:0}.icon{font-size:1.45rem}.steps{margin-top:18px;padding:26px}.steps h2{margin:0 0 18px}.step-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.step{background:var(--panel2);border:1px solid var(--line);border-radius:13px;padding:16px}.step strong{display:block;color:var(--cyan);font-size:.72rem;margin-bottom:8px}.step span{font-size:.82rem;color:#d7e2ec;line-height:1.5}.warning{margin-top:18px;padding:18px 20px;border:1px solid #5b4520;background:#251b0c;border-radius:14px;color:#e7c88f;font-size:.8rem;line-height:1.6}.footer{margin-top:30px;padding-top:22px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:20px;color:var(--muted);font-size:.76rem}.footer a{color:var(--cyan);text-decoration:none}@media(max-width:850px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:1fr}.step-grid{grid-template-columns:1fr 1fr}}@media(max-width:520px){.wrap{padding:18px 14px 46px}.hero-copy,.installer,.steps{padding:20px}.step-grid{grid-template-columns:1fr}.nav{align-items:flex-start}.footer{flex-direction:column}}
+    *{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 20% 0,#10263d 0,#07111f 42%);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif}.wrap{max-width:1120px;margin:auto;padding:28px 20px 70px}.nav{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:10px 0 28px}.brand{font-weight:900;letter-spacing:.02em}.navlinks{display:flex;gap:14px;flex-wrap:wrap}.nav a{color:var(--muted);text-decoration:none;font-size:.86rem}.hero{display:grid;grid-template-columns:1.2fr .8fr;gap:20px;align-items:stretch}.card{background:rgba(15,29,45,.94);border:1px solid var(--line);border-radius:20px;box-shadow:0 20px 55px rgba(0,0,0,.18)}.hero-copy{padding:34px}.eyebrow{color:var(--cyan);font-size:.72rem;text-transform:uppercase;letter-spacing:.13em;font-weight:900}.hero h1{font-size:clamp(2rem,5vw,3.5rem);line-height:1.03;margin:10px 0 16px;letter-spacing:-.045em}.hero p{color:var(--muted);line-height:1.7;margin:0;max-width:720px}.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}.chip{padding:7px 10px;border:1px solid var(--line);border-radius:999px;color:#b9c9d9;font-size:.75rem}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}.btn{display:inline-flex;align-items:center;justify-content:center;padding:11px 15px;border-radius:10px;text-decoration:none;font-weight:800;font-size:.82rem;border:1px solid var(--line)}.btn.primary{background:var(--blue);color:#fff;border-color:transparent}.btn.secondary{background:#0a1725;color:#dce9f5}.installer{padding:26px;display:flex;flex-direction:column;justify-content:center}.installer h2{margin:7px 0 8px}.installer p{font-size:.84rem;color:var(--muted);line-height:1.6}.install-box{padding:17px;border:1px solid var(--line);border-radius:14px;background:#0a1725;margin-top:12px}.install-note{font-size:.72rem;color:var(--muted);margin-top:12px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}.feature{padding:22px}.feature h3{margin:8px 0;font-size:1rem}.feature p{color:var(--muted);font-size:.82rem;line-height:1.55;margin:0}.icon{font-size:1.45rem}.steps{margin-top:18px;padding:26px}.steps h2{margin:0 0 18px}.step-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.step{background:var(--panel2);border:1px solid var(--line);border-radius:13px;padding:16px}.step strong{display:block;color:var(--cyan);font-size:.72rem;margin-bottom:8px}.step span{font-size:.82rem;color:#d7e2ec;line-height:1.5}.warning{margin-top:18px;padding:18px 20px;border:1px solid #5b4520;background:#251b0c;border-radius:14px;color:#e7c88f;font-size:.8rem;line-height:1.6}.footer{margin-top:30px;padding-top:22px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:20px;color:var(--muted);font-size:.76rem}.footer a{color:var(--cyan);text-decoration:none}@media(max-width:850px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:1fr}.step-grid{grid-template-columns:1fr 1fr}}@media(max-width:520px){.wrap{padding:18px 14px 46px}.hero-copy,.installer,.steps{padding:20px}.step-grid{grid-template-columns:1fr}.nav{align-items:flex-start;flex-direction:column}.footer{flex-direction:column}}
   </style>
 </head>
 <body>
 <main class="wrap">
-  <nav class="nav"><div class="brand">ESP8266 Wireless Security Lab</div><div><a href="https://github.com/Tanzeel0Hussain/ESP8266-PhiSiFi-Pro">GitHub Repository</a></div></nav>
+  <nav class="nav">
+    <div class="brand">ESP8266 Wireless Security Lab</div>
+    <div class="navlinks">
+      <a href="https://github.com/Tanzeel0Hussain/ESP8266-PhiSiFi-Pro">Source</a>
+      <a href="https://github.com/Tanzeel0Hussain/ESP8266-PhiSiFi-Pro/releases">Releases</a>
+      <a href="https://github.com/Tanzeel0Hussain/ESP8266-PhiSiFi-Pro/actions">Builds</a>
+    </div>
+  </nav>
+
   <section class="hero">
     <article class="card hero-copy">
-      <span class="eyebrow">Defensive wireless research</span>
+      <span class="eyebrow">Defensive wireless research · v2.0.0</span>
       <h1>See your 2.4 GHz environment clearly.</h1>
-      <p>A compact ESP8266 lab for authorized Wi-Fi observation. The firmware exposes nearby SSIDs, BSSIDs, channels, RSSI and security mode through a clean local dashboard without collecting credentials or disconnecting clients.</p>
+      <p>A compact ESP8266 lab for authorized Wi-Fi observation. The firmware exposes nearby SSIDs, BSSIDs, channels, RSSI and advertised security mode through a clean local dashboard without collecting credentials or disconnecting clients.</p>
       <div class="chips"><span class="chip">ESP8266</span><span class="chip">Passive scanning</span><span class="chip">Local dashboard</span><span class="chip">PlatformIO</span><span class="chip">Browser installer</span></div>
+      <div class="actions">
+        <a class="btn primary" href="#install">Install Firmware</a>
+        <a class="btn secondary" href="https://github.com/Tanzeel0Hussain/ESP8266-PhiSiFi-Pro/releases/download/esp8266/esp8266-wireless-security-lab.bin">Download .BIN</a>
+        <a class="btn secondary" href="https://github.com/Tanzeel0Hussain/ESP8266-PhiSiFi-Pro">View Source</a>
+      </div>
     </article>
-    <aside class="card installer">
+
+    <aside class="card installer" id="install">
       <span class="eyebrow">Web flasher</span>
-      <h2>Install from your browser</h2>
-      <p>Connect a supported ESP8266 board over USB, select the serial device when your browser asks, and flash the latest tested build.</p>
+      <h2>Install directly from your browser</h2>
+      <p>Connect a supported ESP8266 board over USB, select the serial device when your browser asks, and flash the current defensive firmware.</p>
       <div class="install-box">
         <esp-web-install-button manifest="manifest.json"></esp-web-install-button>
       </div>
-      <div class="install-note">Best experience: desktop Chrome or Edge over HTTPS. The browser will always ask you to approve the serial device.</div>
+      <div class="install-note">Use desktop Chrome or Microsoft Edge over HTTPS. A data-capable USB cable is required, and the browser will always ask you to approve the serial device.</div>
     </aside>
   </section>
 
   <section class="grid">
     <article class="card feature"><div class="icon">📡</div><h3>Nearby network inventory</h3><p>View SSID, BSSID, channel, signal strength and advertised security mode from the ESP8266 dashboard.</p></article>
     <article class="card feature"><div class="icon">🛡️</div><h3>Defensive by design</h3><p>The current firmware focuses on observation and configuration awareness instead of deauthentication, impersonation or credential collection.</p></article>
-    <article class="card feature"><div class="icon">⚙️</div><h3>Easy firmware delivery</h3><p>GitHub Actions compiles the PlatformIO firmware and packages the generated binary with this installer site.</p></article>
+    <article class="card feature"><div class="icon">⚙️</div><h3>Reproducible delivery</h3><p>GitHub Actions compiles the PlatformIO firmware, updates the browser-installable binary and publishes a downloadable release asset.</p></article>
   </section>
 
   <section class="card steps">
     <h2>Quick start</h2>
     <div class="step-grid">
-      <div class="step"><strong>01 · CONNECT</strong><span>Attach your ESP8266 development board using a data-capable USB cable.</span></div>
-      <div class="step"><strong>02 · INSTALL</strong><span>Use the installer above and approve the serial port requested by the browser.</span></div>
+      <div class="step"><strong>01 · CONNECT</strong><span>Attach your ESP8266 board using a data-capable USB cable.</span></div>
+      <div class="step"><strong>02 · INSTALL</strong><span>Press Install Firmware and approve the serial port requested by the browser.</span></div>
       <div class="step"><strong>03 · JOIN</strong><span>After reboot, connect to <b>ESP8266-Security-Lab</b> using password <b>securitylab</b>.</span></div>
-      <div class="step"><strong>04 · MONITOR</strong><span>Open <b>192.168.4.1</b> to use the local passive Wi-Fi dashboard.</span></div>
+      <div class="step"><strong>04 · MONITOR</strong><span>Open <b>192.168.4.1</b> and press <b>Scan now</b> to refresh nearby networks.</span></div>
     </div>
   </section>
 
-  <div class="warning"><b>Authorized use only.</b> This project is intended for your own lab, classroom, and approved wireless-security observation. Radio behavior and scan results vary by board, environment and regional requirements.</div>
+  <div class="warning"><b>Authorized use only.</b> This project is intended for your own lab, classroom, and approved wireless-security observation. It does not provide credential collection or client-disruption features.</div>
 
-  <footer class="footer"><span>ESP8266 Wireless Security Lab · v1.0</span><span>Maintained by <a href="https://github.com/Tanzeel0Hussain">Tanzeel Hussain</a></span></footer>
+  <footer class="footer"><span>ESP8266 Wireless Security Lab · v2.0.0</span><span>Maintained by <a href="https://github.com/Tanzeel0Hussain">Tanzeel Hussain</a></span></footer>
 </main>
 </body>
 </html>
