@@ -1,17 +1,19 @@
-name: Build Firmware and Pages
+name: Build ESP8266 Firmware
 
 on:
   push:
     branches: [ main ]
+    paths-ignore:
+      - 'docs/firmware/**'
+  pull_request:
+    branches: [ main ]
   workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
 concurrency:
-  group: pages
+  group: esp8266-firmware-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -20,6 +22,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -32,33 +36,62 @@ jobs:
       - name: Compile ESP8266 firmware
         run: pio run -e nodemcuv2
 
-      - name: Prepare web installer site
+      - name: Prepare firmware binary
         run: |
-          mkdir -p site/firmware
-          cp -r docs/. site/
-          cp .pio/build/nodemcuv2/firmware.bin site/firmware/esp8266-wireless-security-lab.bin
+          mkdir -p docs/firmware
+          cp .pio/build/nodemcuv2/firmware.bin docs/firmware/esp8266-wireless-security-lab.bin
+          cp .pio/build/nodemcuv2/firmware.bin esp8266-wireless-security-lab.bin
 
-      - name: Upload compiled firmware artifact
+      - name: Upload firmware artifact
         uses: actions/upload-artifact@v4
         with:
           name: esp8266-wireless-security-lab-firmware
-          path: .pio/build/nodemcuv2/firmware.bin
+          path: esp8266-wireless-security-lab.bin
 
-      - name: Configure GitHub Pages
-        uses: actions/configure-pages@v5
+      - name: Update firmware file used by the web installer
+        if: github.event_name != 'pull_request'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/firmware/esp8266-wireless-security-lab.bin
+          if git diff --cached --quiet; then
+            echo "Firmware binary is already current."
+          else
+            git commit -m "build: update browser-installable firmware [skip ci]"
+            git push
+          fi
 
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: site
+      - name: Update defensive firmware release
+        if: github.event_name != 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          cat > release-notes.md <<'EOF'
+          ## ESP8266 Wireless Security Lab v2.0.0
 
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          This release replaces the previous offensive proof-of-concept with the current defensive firmware.
+
+          ### Current capabilities
+          - Passive nearby Wi-Fi scanning
+          - SSID and BSSID visibility
+          - Channel and RSSI display
+          - Advertised security-mode identification
+          - Open-network configuration warning
+          - Local responsive ESP8266 dashboard
+          - Browser installation through ESP Web Tools
+
+          The current firmware does not disconnect clients, impersonate access points, or collect Wi-Fi credentials.
+          EOF
+
+          if gh release view esp8266 >/dev/null 2>&1; then
+            gh release edit esp8266 \
+              --title "ESP8266 Wireless Security Lab v2.0.0" \
+              --notes-file release-notes.md \
+              --latest
+            gh release upload esp8266 esp8266-wireless-security-lab.bin --clobber
+          else
+            gh release create esp8266 esp8266-wireless-security-lab.bin \
+              --title "ESP8266 Wireless Security Lab v2.0.0" \
+              --notes-file release-notes.md \
+              --latest
+          fi
