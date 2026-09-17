@@ -11,11 +11,11 @@ A compact **defensive Wi-Fi visibility and embedded-security lab** for ESP8266 d
 
 ## Quick Links
 
-- **Live browser installer:** https://tanzeel0hussain.github.io/ESP8266-PhiSiFi-Pro/
-- **Download latest firmware:** https://github.com/Tanzeel0Hussain/ESP8266-PhiSiFi-Pro/releases/download/esp8266/esp8266-wireless-security-lab.bin
-- **Firmware releases:** https://github.com/Tanzeel0Hussain/ESP8266-PhiSiFi-Pro/releases
-- **Build status:** https://github.com/Tanzeel0Hussain/ESP8266-PhiSiFi-Pro/actions
-- **Source repository:** https://github.com/Tanzeel0Hussain/ESP8266-PhiSiFi-Pro
+- 🚀 **[Open Live Web Installer](https://tanzeel0hussain.github.io/ESP8266-PhiSiFi-Pro/)**
+- 📦 **[Download Latest Firmware](https://github.com/Tanzeel0Hussain/ESP8266-PhiSiFi-Pro/releases/download/esp8266/esp8266-wireless-security-lab.bin)**
+- 🏷️ **[View Firmware Releases](https://github.com/Tanzeel0Hussain/ESP8266-PhiSiFi-Pro/releases)**
+- ✅ **[View Build Status](https://github.com/Tanzeel0Hussain/ESP8266-PhiSiFi-Pro/actions)**
+- 💻 **[Browse Source Code](https://github.com/Tanzeel0Hussain/ESP8266-PhiSiFi-Pro)**
 
 ## Features
 
@@ -32,9 +32,9 @@ A compact **defensive Wi-Fi visibility and embedded-security lab** for ESP8266 d
 
 ## Browser Installation
 
-For the easiest setup, open the **Live Web Installer**:
+For the easiest setup, use the browser installer:
 
-### https://tanzeel0hussain.github.io/ESP8266-PhiSiFi-Pro/
+### 🚀 [Open Live Web Installer](https://tanzeel0hussain.github.io/ESP8266-PhiSiFi-Pro/)
 
 Then:
 
@@ -51,7 +51,7 @@ The browser cannot silently access a serial device. You must approve the port yo
 1. Power or reboot the ESP8266.
 2. Connect your phone/laptop to Wi-Fi **`ESP8266-Security-Lab`**.
 3. Use password **`securitylab`**.
-4. Open **http://192.168.4.1** in your browser.
+4. Open **[Local Device Dashboard](http://192.168.4.1)** in your browser.
 5. Press **Scan now** to refresh nearby-network information.
 
 ## Local Dashboard
@@ -70,9 +70,9 @@ No Wi-Fi password is requested or stored by the current firmware.
 
 ## Manual Firmware Download
 
-If you prefer to flash the board manually, download the latest compiled binary:
+If you prefer to flash the board manually:
 
-**[Download `esp8266-wireless-security-lab.bin`](https://github.com/Tanzeel0Hussain/ESP8266-PhiSiFi-Pro/releases/download/esp8266/esp8266-wireless-security-lab.bin)**
+### 📦 [Download ESP8266 Firmware](https://github.com/Tanzeel0Hussain/ESP8266-PhiSiFi-Pro/releases/download/esp8266/esp8266-wireless-security-lab.bin)
 
 The same firmware binary is also generated on each successful GitHub Actions build.
 
@@ -142,7 +142,7 @@ GitHub Pages serves the static installer site separately, avoiding duplicate dep
 
 This repository is intended for your own hardware, classroom labs, and explicitly authorized wireless-security observation. It focuses on visibility and configuration awareness rather than client disruption, access-point impersonation, or credential collection.
 
-See [SECURITY.md](SECURITY.md) for responsible-use guidance.
+See **[Security & Responsible Use](SECURITY.md)** for guidance.
 
 ## USB Driver Note
 
@@ -159,9 +159,9 @@ USB-UART drivers depend on the USB bridge used by your development board. Instal
 
 ## License
 
-Released under the [MIT License](LICENSE).
+Released under the **[MIT License](LICENSE)**.
 
 ## Maintainer
 
 **Tanzeel Hussain**  
-GitHub: https://github.com/Tanzeel0Hussain
+[View GitHub Profile](https://github.com/Tanzeel0Hussain)
