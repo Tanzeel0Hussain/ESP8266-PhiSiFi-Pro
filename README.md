@@ -1,125 +1,167 @@
 # ESP8266 Wireless Security Lab
 
-A compact **defensive Wi-Fi visibility project** for ESP8266 development boards. The current firmware performs passive nearby-network scanning and serves a local dashboard showing SSID, BSSID, channel, RSSI, and advertised security mode.
+[![Firmware Build](https://github.com/Tanzeel0Hussain/ESP8266-PhiSiFi-Pro/actions/workflows/build-and-pages.yml/badge.svg)](https://github.com/Tanzeel0Hussain/ESP8266-PhiSiFi-Pro/actions/workflows/build-and-pages.yml)
+[![Live Installer](https://img.shields.io/badge/Live-Web%20Installer-2563eb?logo=github)](https://tanzeel0hussain.github.io/ESP8266-PhiSiFi-Pro/)
+[![Firmware](https://img.shields.io/badge/Download-Firmware-16a34a?logo=espressif)](https://github.com/Tanzeel0Hussain/ESP8266-PhiSiFi-Pro/releases/download/esp8266/esp8266-wireless-security-lab.bin)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-> This project is intended for your own lab, classroom, and explicitly authorized wireless-security observation. The current main-branch firmware does **not** disconnect clients, impersonate access points, or collect Wi-Fi credentials.
+A compact **defensive Wi-Fi visibility and embedded-security lab** for ESP8266 development boards. The current firmware performs passive nearby-network scanning and hosts a responsive local dashboard showing SSID, BSSID, channel, RSSI, and advertised security mode.
 
-## Highlights
+> **Defensive project:** the current `main` branch does not disconnect clients, impersonate access points, or request/store Wi-Fi credentials.
+
+## Quick Links
+
+- **Live browser installer:** https://tanzeel0hussain.github.io/ESP8266-PhiSiFi-Pro/
+- **Download latest firmware:** https://github.com/Tanzeel0Hussain/ESP8266-PhiSiFi-Pro/releases/download/esp8266/esp8266-wireless-security-lab.bin
+- **Firmware releases:** https://github.com/Tanzeel0Hussain/ESP8266-PhiSiFi-Pro/releases
+- **Build status:** https://github.com/Tanzeel0Hussain/ESP8266-PhiSiFi-Pro/actions
+- **Source repository:** https://github.com/Tanzeel0Hussain/ESP8266-PhiSiFi-Pro
+
+## Features
 
 - Passive 2.4 GHz Wi-Fi scanning
 - SSID and BSSID inventory
 - Channel and RSSI visibility
 - Advertised security-mode identification
-- Open-network configuration warning
-- Local responsive dashboard hosted by the ESP8266
-- PlatformIO build configuration
-- Browser-based firmware installer using ESP Web Tools
-- GitHub Actions firmware compilation and Pages packaging
+- Warning for open networks
+- Local responsive dashboard hosted directly by the ESP8266
+- PlatformIO-based reproducible firmware builds
+- Browser installation with ESP Web Tools
+- Automatic GitHub Actions firmware compilation
+- Downloadable `.bin` firmware release
 
-## Quick Start
+## Browser Installation
 
-### Browser installer
+For the easiest setup, open the **Live Web Installer**:
 
-Once GitHub Pages is enabled for the included Actions workflow, open:
+### https://tanzeel0hussain.github.io/ESP8266-PhiSiFi-Pro/
 
-`https://tanzeel0hussain.github.io/ESP8266-PhiSiFi-Pro/`
+Then:
 
-Connect a supported ESP8266 board with a data-capable USB cable, click the install button, and approve the serial device in the browser. Chrome or Edge on desktop is recommended for Web Serial support.
+1. Connect a supported ESP8266 development board with a **data-capable USB cable**.
+2. Use desktop **Chrome or Microsoft Edge**.
+3. Click the firmware installation button on the live page.
+4. Approve the serial device when the browser asks.
+5. Wait for flashing to finish and reboot the board.
 
-### Local build
+The browser cannot silently access a serial device. You must approve the port yourself.
 
-Requirements:
+## After Installation
+
+1. Power or reboot the ESP8266.
+2. Connect your phone/laptop to Wi-Fi **`ESP8266-Security-Lab`**.
+3. Use password **`securitylab`**.
+4. Open **http://192.168.4.1** in your browser.
+5. Press **Scan now** to refresh nearby-network information.
+
+## Local Dashboard
+
+The ESP8266 dashboard displays:
+
+| Field | Meaning |
+| --- | --- |
+| SSID | Advertised Wi-Fi network name |
+| BSSID | Access-point MAC address |
+| Channel | 2.4 GHz operating channel |
+| RSSI | Observed signal strength |
+| Security | Advertised Wi-Fi security mode |
+
+No Wi-Fi password is requested or stored by the current firmware.
+
+## Manual Firmware Download
+
+If you prefer to flash the board manually, download the latest compiled binary:
+
+**[Download `esp8266-wireless-security-lab.bin`](https://github.com/Tanzeel0Hussain/ESP8266-PhiSiFi-Pro/releases/download/esp8266/esp8266-wireless-security-lab.bin)**
+
+The same firmware binary is also generated on each successful GitHub Actions build.
+
+## Build from Source
+
+### Requirements
 
 - Python 3
 - PlatformIO CLI or PlatformIO IDE
-- ESP8266 development board such as NodeMCU v2
+- ESP8266 development board such as NodeMCU v2 / ESP-12E
+
+Clone the repository and build:
 
 ```bash
+git clone https://github.com/Tanzeel0Hussain/ESP8266-PhiSiFi-Pro.git
+cd ESP8266-PhiSiFi-Pro
 pio run -e nodemcuv2
 ```
 
-The compiled firmware is generated under:
+The compiled binary is created at:
 
 ```text
 .pio/build/nodemcuv2/firmware.bin
 ```
 
-To upload from PlatformIO:
+Upload directly through PlatformIO:
 
 ```bash
 pio run -e nodemcuv2 -t upload
 ```
 
-## After Installation
-
-1. Reboot the ESP8266.
-2. Connect to Wi-Fi: `ESP8266-Security-Lab`
-3. Password: `securitylab`
-4. Open `http://192.168.4.1`
-5. Use **Scan now** to refresh nearby-network metadata.
-
-## Current Data Displayed
-
-| Field | Purpose |
-| --- | --- |
-| SSID | Advertised network name |
-| BSSID | Access-point MAC address |
-| Channel | 2.4 GHz operating channel |
-| RSSI | Observed signal strength |
-| Security | Advertised encryption/security mode |
-
-No Wi-Fi passwords are requested or stored by the current firmware.
-
 ## Repository Structure
 
 ```text
-.
-├── .github/workflows/
-│   └── build-and-pages.yml
+ESP8266-PhiSiFi-Pro/
+├── .github/
+│   └── workflows/
+│       └── build-and-pages.yml
 ├── docs/
-│   ├── index.html
-│   └── manifest.json
+│   ├── firmware/
+│   │   └── esp8266-wireless-security-lab.bin   # generated by CI
+│   ├── index.html                              # live installer
+│   └── manifest.json                           # ESP Web Tools manifest
 ├── firmware/
 │   └── src/
-│       └── main.cpp
+│       └── main.cpp                            # defensive firmware
 ├── platformio.ini
+├── SECURITY.md
 ├── LICENSE
 └── README.md
 ```
 
-## Web Installer Pipeline
+## Automated Build Pipeline
 
-Every push to `main` triggers GitHub Actions to:
+Every relevant push to `main` automatically:
 
-1. Compile the ESP8266 firmware with PlatformIO.
-2. Produce `firmware.bin`.
-3. Copy the binary into the generated installer site.
-4. Upload the firmware as a workflow artifact.
-5. Deploy the installer site through GitHub Pages when Pages is configured to use GitHub Actions.
+1. Installs PlatformIO.
+2. Compiles the ESP8266 firmware.
+3. Generates `firmware.bin`.
+4. Copies the current binary into `docs/firmware/` for the browser installer.
+5. Uploads the binary as a GitHub Actions artifact.
+6. Updates the downloadable GitHub Release asset.
 
-The ESP Web Tools manifest is located at `docs/manifest.json`.
+GitHub Pages serves the static installer site separately, avoiding duplicate deployment workflows.
 
-## Design Direction
+## Safety and Scope
 
-This repository has been repositioned as a **defensive wireless-security lab**. The focus is network visibility, configuration awareness, clean embedded engineering, repeatable builds, and simple firmware delivery.
+This repository is intended for your own hardware, classroom labs, and explicitly authorized wireless-security observation. It focuses on visibility and configuration awareness rather than client disruption, access-point impersonation, or credential collection.
 
-Planned improvements include:
+See [SECURITY.md](SECURITY.md) for responsible-use guidance.
+
+## USB Driver Note
+
+USB-UART drivers depend on the USB bridge used by your development board. Install the official driver for the specific CH340/CH341, CP210x, or other adapter on your board instead of using bundled third-party driver archives.
+
+## Roadmap
 
 - Duplicate/rogue SSID observations
 - Channel-distribution summary
 - Security posture hints
 - Optional event logging
 - Additional tested ESP8266 boards
-- Screenshots and hardware documentation
-
-## Driver Note
-
-USB-UART drivers depend on the board revision and USB bridge chip. Use the official vendor driver for your specific CH340/CH341, CP210x, or other USB-UART adapter instead of bundled third-party driver archives.
+- Hardware screenshots and wiring notes
 
 ## License
 
-MIT License. See [LICENSE](LICENSE).
+Released under the [MIT License](LICENSE).
 
 ## Maintainer
 
-[Tanzeel Hussain](https://github.com/Tanzeel0Hussain)
+**Tanzeel Hussain**  
+GitHub: https://github.com/Tanzeel0Hussain
