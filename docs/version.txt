@@ -1,0 +1,3 @@
+ESP8266 Wireless Security Lab
+Version: 2.0.0
+Firmware: esp8266-wireless-security-lab.bin
